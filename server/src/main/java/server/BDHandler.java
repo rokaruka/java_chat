@@ -12,7 +12,7 @@ public class BDHandler {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:main.db");
-            prepareAallStmt();
+            prepareAllStmt();
             return true;
 
         } catch (ClassNotFoundException e) {
@@ -26,7 +26,7 @@ public class BDHandler {
 
     }
 
-    private static void prepareAallStmt() throws SQLException {
+    private static void prepareAllStmt() throws SQLException {
         getNickname = connection.prepareStatement("SELECT nickname FROM users WHERE login = ? AND password = ?;");
         registration= connection.prepareStatement("INSERT INTO users(login, password, nickname) VALUES (? ,? ,? );");
     }
